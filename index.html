@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frans</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Montserrat font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- End montserrat font -->
+</head>
+<body>
+    <div class="mainContent">
+        <header>
+            <h1>Frans Vocabulair</h1>
+        </header>
+        <div id="multiRadioWrapper">
+            <div class="radioWrapper radioWrapperChecked">
+                <input type="radio" name="vocabRadio" id="vocabRadio1" value="vocabT1E1" checked>
+                <label for="vocabRadio1">Vocab T1 E1</label>
+            </div>
+            <div class="radioWrapper">
+                <input type="radio" name="vocabRadio" id="vocabRadio2" value="vocabT1E2">
+                <label for="vocabRadio2">Vocab T1 E2</label>
+            </div>
+            <div class="radioWrapper">
+                <input type="radio" name="vocabRadio" id="vocabRadio3" value="vocabT2E1">
+                <label for="vocabRadio3">Vocab T2 E1</label>
+            </div>
+            <div class="radioWrapper">
+                <input type="radio" name="vocabRadio" id="vocabRadio4" value="vocabT2E2">
+                <label for="vocabRadio4">Vocab T2 E2</label>
+            </div>
+        </div>
+        <div class="test">
+            <h1 id="nederlandsWoord">ExampleWord</h1>
+            <form id='formulier'>
+                <input type="text" name="invulVeld" id="invulVeld" autocomplete="off">
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+body{
+    background-color: #432E54;
+    margin: 0px;
+    color: #E8BCB9;
+    font-family: montserrat, Arial, Helvetica, sans-serif
+}
+header{
+    font-size: 16px;
+    text-decoration: underline;
+}
+div{
+    font-size: 0;
+    vertical-align: top;
+}
+.mainContent{
+    min-width: 800px;
+    margin: 0% 10%;
+}
+.radioWrapper{
+    font-size: 16px;
+    width: fit-content;
+    display: inline-block;
+    border: 2px solid #4B4376;
+    padding: 0.5% 2%;
+    input{
+        width: 0;
+        margin: 0;
+        appearance: none;
+    }
+}
+.radioWrapperChecked{
+    font-size: 16px;
+    width: fit-content;
+    display: inline-block;
+    border: 2px solid #AE445A;
+    padding: 0.5% 2%;
+    opacity: 0.75;
+}
+
+.test{
+    margin-top: 10vh;
+    box-sizing: border-box;
+    height: fit-content;
+    h1{
+        font-size: 35px;
+        text-align: center;
+    }
+    input{
+        display: block;
+        width: 30%;
+        font-size: 30px;
+        margin: 0% auto;
+        background-color: #4B4376;
+        border: 2px solid #AE445A;
+        border-radius: 5px;
+        color:#E8BCB9;
+        font-family: "Montserrat", Arial, Helvetica, sans-serif;
+        font-weight:400;
+        &:focus-visible{
+            outline: 2px solid #AE445A;
+        }
+    }
+}
