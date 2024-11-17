@@ -61,3 +61,37 @@ div{
         }
     }
 }
+.stats{
+    background-color:#4B4376;
+    margin: 6vh auto 0;
+    height: fit-content;
+    width: 50vw;
+    font-size: 20px;
+    padding: 1%;
+    h3{
+        font-size: 30px;
+        margin: .5% 0%;
+        padding: .5%;
+        text-align: center;
+        border-bottom:solid #E8BCB9;
+    }
+    span{
+        display: inline-block;
+        margin: 0.5% 0%;
+        width: 100%;
+        p{
+            display: inline-block;
+            margin: 0;
+            padding: 0 .5%
+        }
+    }
+    h4{
+        margin: 1% 0%;
+    }
+    .correct{
+        color: green;
+    }
+    .fout{
+        color: red;
+    }
+}
