@@ -70,4 +70,40 @@ div {
 }
 .test input:focus-visible {
   outline: 2px solid #AE445A;
+}
+
+.stats {
+  background-color: #4B4376;
+  margin: 6vh auto 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 50vw;
+  font-size: 20px;
+  padding: 1%;
+}
+.stats h3 {
+  font-size: 30px;
+  margin: 0.5% 0%;
+  padding: 0.5%;
+  text-align: center;
+  border-bottom: solid #E8BCB9;
+}
+.stats span {
+  display: inline-block;
+  margin: 0.5% 0%;
+  width: 100%;
+}
+.stats span p {
+  display: inline-block;
+  margin: 0;
+  padding: 0 0.5%;
+}
+.stats h4 {
+  margin: 1% 0%;
+}
+.stats .correct {
+  color: green;
+}
+.stats .fout {
+  color: red;
 }/*# sourceMappingURL=styles.css.map */
