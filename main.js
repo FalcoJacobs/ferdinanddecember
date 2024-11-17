@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function(){
     // Var
     var checkedRadio = document.querySelector('input[name=vocabRadio]:checked');
     var multiRadioWrapper = document.getElementById("multiRadioWrapper");
+    var wrongAnswerAudio = new Audio('wrongAnswer.mp3');
+    wrongAnswerAudio.volume = 0.05
+    var rightAnswerAudio = new Audio('rightAnswer.mp3')
+    rightAnswerAudio.volume = 0.05
 
     // form input antwoord:
     var formulier = document.getElementById("formulier");
@@ -14,9 +18,9 @@ document.addEventListener('DOMContentLoaded', function(){
     var nederlandsWoord = ''
 
     // VocabLijsten
-    stringNLT1E1 = 'een toekomst, het vrijwilligerswerk, een vrijwilliger (type 1), een vrijwilligster (type 1), een zaak, een goede zaak, oorzaak, een verandering, een leider, een leidster, de diversiteit, een engagement, iets waar je je voor inzet, het milieu, een generatie, een merk, een lid (mannelijk), een lid (vrouwelijk), een jeugdbeweging, een reden, een tendens, een trend, een vrijwilliger (type2), vrijwilligster (type2)'
+    stringNLT1E1 = 'een toekomst, het vrijwilligerswerk, een vrijwilliger (type 1), een vrijwilligster (type 1), een zaak, een goede zaak, een oorzaak, een verandering, een leider, een leidster, de diversiteit, een engagement, iets waar je je voor inzet, het milieu, een generatie, een merk, een lid (mannelijk), een lid (vrouwelijk), een jeugdbeweging, een reden, een tendens, een trend, een vrijwilliger (type2), een vrijwilligster (type2), nuttig, handelen, bevestigen, bevestigd worden, beschouwen, zich beschouwen als, bouwen, opbouwen, uitdelen, zich engageren, zich inzetten, duwen, drijven tot, zich voelen, zin hebben, zin hebben (in/om), mensen ontmoeten, iemand een plezier doen, kortom, tweedehands'
     nlTour1Etape1 = stringNLT1E1.split(', ');
-    stringFRT1E1 = 'un avenir, le bénévolat, un bénévole, une bénévole, une cause, une bonne cause, une cause, un changement, un chef, une cheffe, la diversité, un engagement, un engagement, l\'environement, une génération, une marque, un membre, une membre, un mouvement de jeunesse, une raison, une tendance, une tendance, un volontaire, une volontaire'
+    stringFRT1E1 = 'un avenir, le bénévolat, un bénévole, une bénévole, une cause, une bonne cause, une cause, un changement, un chef, une cheffe, la diversité, un engagement, un engagement, l\'environement, une génération, une marque, un membre, une membre, un mouvement de jeunesse, une raison, une tendance, une tendance, un volontaire, une volontaire, utile, agir, confirmer, se confirmer, considérer, se considérer comme, construire, construire, distribuer, s\'engager, s\'engager, pousser, pousser à, se sentir, avoir envie, avoir envie de, faire des rencontres, faire plaisir à, bref, de seconde main'
     frTour1Etape1 = stringFRT1E1.split(', ');
     multiArrayT1E1 = [nlTour1Etape1, frTour1Etape1];
 
@@ -32,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function(){
     
     // uit welke lijst er woorden moeten gehaald worden (waar ze ook in worden verwijderd).
     activeList = multiArrayT1E1
+    activeListLength = activeList[0].length
+    activeFoutenLijst = new Array()
 
 
 
@@ -47,12 +53,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Bij opstart:
     getWorking()
+    var woordenGedaan = 0
+    var woordenJuist = 0
 
     formulier.addEventListener('submit', function(event){
         event.preventDefault();
-
+        woordenGedaan++
         var ingevuldAntwoord = inputVeld.value;
-        console.log(checkCorrectInput(ingevuldAntwoord, fransWoord));
+        var juistOfFout = (checkCorrectInput(ingevuldAntwoord, fransWoord));
+        rightAnswerAudio.pause();
+        rightAnswerAudio.currentTime = 0;
+        wrongAnswerAudio.pause();
+        wrongAnswerAudio.currentTime = 0;
+        showStats(juistOfFout, woordenGedaan, woordenJuist, activeListLength, ingevuldAntwoord, fransWoord, nederlandsWoord)
         getWorking()
         inputVeld.value = '';
     });
@@ -68,10 +81,9 @@ document.addEventListener('DOMContentLoaded', function(){
         ingevuldAntwoord = ingevuldAntwoord.toLowerCase();
 
         if(ingevuldAntwoord == echtAntwoord){
+            woordenJuist++
             return true;
         }else{
-            console.log(ingevuldAntwoord);
-            console.log(echtAntwoord);
             return false;
         }
     };
@@ -96,4 +108,28 @@ document.addEventListener('DOMContentLoaded', function(){
         fransWoord = randomWoordArray[1];
         document.getElementById('nederlandsWoord').innerHTML = nederlandsWoord;
     }
+    function showStats(juistOfFout, woordenGedaan, woordenJuist, lijstLengte, vorigeInput, juisteAntwoord, nederlandsWoord){
+        if(juistOfFout === true){
+            document.getElementById('juistOfFout').innerHTML = 'Juist';
+            document.getElementById('vorigInput').style.color = '#AAFF00';
+            rightAnswerAudio.play();
+        }else{
+            document.getElementById('juistOfFout').innerHTML = 'Fout';
+            document.getElementById('vorigInput').style.color = '#EE4B2B';
+            wrongAnswerAudio.play();
+            activeFoutenLijst.push(String(juisteAntwoord));
+        }
+        document.getElementById('vorigNederlandsWoord').innerHTML = String(nederlandsWoord[0]);
+        document.getElementById('aantalWoordenGedaan').innerHTML = (String(woordenGedaan) + '/' + String(lijstLengte));
+        document.getElementById('accuracy').innerHTML = (woordenJuist/woordenGedaan * 100).toFixed(2) + '%';
+        document.getElementById('vorigInput').innerHTML = vorigeInput;
+        document.getElementById('vorigJuisteAntwoord').innerHTML = juisteAntwoord;
+    }
+});
+// https://stackoverflow.com/questions/7317273/warn-user-before-leaving-web-page-with-unsaved-changes
+window.addEventListener("beforeunload", function (e) {
+    var confirmationMessage = 'your progress will be lost';
+
+    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
 });
