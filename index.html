@@ -37,8 +37,17 @@
         <div class="test">
             <h1 id="nederlandsWoord">ExampleWord</h1>
             <form id='formulier'>
-                <input type="text" name="invulVeld" id="invulVeld" autocomplete="off">
+                <input type="text" name="invulVeld" id="invulVeld" autocomplete="off" spellcheck="false">
             </form>
+        </div>
+        <div class="stats">
+            <h3 id="juistOfFout">...</h3>
+            <span><p>Woorden:</p><p id="aantalWoordenGedaan">0/lijstlengte</p></span>
+            <span><p>Correct:</p><p id="accuracy">0%</p></span>
+            <h4>vorig antwoord:</h4>
+            <span><p>Nederlands Woord:</p><p id="vorigNederlandsWoord">(Nederlandse woord)</p></span>
+            <span><p>Ingevuld:</p><p id="vorigInput">(Ingevuld Antwoord)</p></span>
+            <span><p>Correct antwoord:</p><p id="vorigJuisteAntwoord">(Correct bedoelt antwoord)</p></span>
         </div>
     </div>
     <script src="main.js"></script>
