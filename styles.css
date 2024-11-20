@@ -16,7 +16,6 @@ div {
 }
 
 .mainContent {
-  min-width: 800px;
   margin: 0% 10%;
 }
 
@@ -58,7 +57,7 @@ div {
 }
 .test input {
   display: block;
-  width: 30%;
+  width: 40%;
   font-size: 30px;
   margin: 0% auto;
   background-color: #4B4376;
@@ -78,6 +77,7 @@ div {
   height: -moz-fit-content;
   height: fit-content;
   width: 50vw;
+  min-width: 600px;
   font-size: 20px;
   padding: 1%;
 }
@@ -106,4 +106,41 @@ div {
 }
 .stats .fout {
   color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    text-align: center;
+    font-size: 16px;
+  }
+  .mainContent {
+    margin: 0;
+    width: 100vw;
+  }
+  .test {
+    margin-top: 5vh;
+  }
+  .test h1 {
+    font-size: 25px;
+  }
+  .test input {
+    display: block;
+    width: 80%;
+    font-size: 25px;
+  }
+  .stats {
+    min-width: 0;
+    width: 98%;
+    margin-right: 0;
+  }
+  .stats span {
+    padding: 1vh 0vh;
+    font-size: 16px;
+  }
+  .stats span:first-of-type {
+    border-top: none;
+  }
+  .stats h4 {
+    font-size: 20px;
+  }
 }/*# sourceMappingURL=styles.css.map */
