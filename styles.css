@@ -108,6 +108,15 @@ div {
   color: red;
 }
 
+.info {
+  font-size: 18px;
+  margin: 6vh auto 0;
+  width: 50vw;
+}
+.info li {
+  margin-top: 2vh;
+}
+
 @media only screen and (max-width: 600px) {
   header {
     text-align: center;
@@ -140,7 +149,14 @@ div {
   .stats span:first-of-type {
     border-top: none;
   }
+  .stats h3 {
+    font-size: 25px;
+  }
   .stats h4 {
     font-size: 20px;
+  }
+  .info {
+    min-width: 0;
+    width: 100%;
   }
 }/*# sourceMappingURL=styles.css.map */
