@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var multiRadioWrapper = document.getElementById("multiRadioWrapper");
     var wrongAnswerAudio = new Audio('wrongAnswer.mp3');
     wrongAnswerAudio.volume = 0.05
-    var rightAnswerAudio = new Audio('rightAnswer.mp3')
+    var rightAnswerAudio = new Audio('rightAnswer.mp3');
     rightAnswerAudio.volume = 0.05
 
     // form input antwoord:
@@ -41,10 +41,6 @@ document.addEventListener('DOMContentLoaded', function(){
     stringFRT2E2 = 'une activité, une aide, un avis, une bande, une bande d\'amis, un bruit, un bruit, une communauté, l\'energie, une expérience, un manuel, une offre, une opinion, un organisateur, une organisatrice, un particulier, un produit, un projecteur, un projecteur, un revenu, un technicien, une technicienne, favori, favorite, technique, apprécier, apprécier, constater, constater, functionner, functionner, louer, promettre, tromper, ça me plait, ça me plait, donner un coup de main, laisser un message, offrir son aide, à mon avis, avec plaisir, volontiers, un bien, un gain financier, le troc, une tromperie, parvenir à, faire appel à, jeter un coup d\'oeil sur';
     frTour2Etape2 = stringFRT2E2.split(', ');
     multiArrayT2E2 = [nlTour2Etape2, frTour2Etape2];
-    console.log(multiArrayT2E2)
-    for (i = 0; i < multiArrayT2E2[1].length; i++){
-        console.log(multiArrayT2E2[0][i] + ' ' + multiArrayT2E2[1][i])
-    }
     
     // uit welke lijst er woorden moeten gehaald worden (waar ze ook in worden verwijderd).
     activeList = multiArrayT1E1
@@ -142,13 +138,14 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     function showStats(juistOfFout, woordenGedaanUitActiveLijst, woordenJuist, lijstLengte, vorigeInput, juisteAntwoord, nederlandsWoord){
         if(juistOfFout === true){
+            rightAnswerAudio.play();
             document.getElementById('juistOfFout').innerHTML = 'Juist';
             document.getElementById('vorigInput').style.color = '#AAFF00';
             rightAnswerAudio.play();
         }else{
+            wrongAnswerAudio.play();
             document.getElementById('juistOfFout').innerHTML = 'Fout';
             document.getElementById('vorigInput').style.color = '#EE4B2B';
-            wrongAnswerAudio.play();
             activeFoutenLijst[0].push(String(nederlandsWoord))
             activeFoutenLijst[1].push(String(juisteAntwoord));
         }
