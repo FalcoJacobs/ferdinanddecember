@@ -45,6 +45,14 @@ div {
   opacity: 0.75;
 }
 
+.muteKnop {
+  margin-top: 1vh;
+  font-size: 16px;
+}
+.muteKnop input[type=checkbox] {
+  accent-color: #AE445A;
+}
+
 .test {
   margin-top: 10vh;
   box-sizing: border-box;
