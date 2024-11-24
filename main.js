@@ -90,6 +90,21 @@ document.addEventListener('DOMContentLoaded', function(){
         getWorking()
     });
 
+    // Moeten de soundeffects aanstaan?
+    checkKnop = document.getElementById('muteKnop');
+    isMute = checkKnop.checked;
+    checkKnop.addEventListener('change', function(){
+        isMute = checkKnop.checked;
+        console.log(isMute);
+        if(isMute){
+            wrongAnswerAudio.volume = 0;
+            rightAnswerAudio.volume = 0;
+        }else{
+            wrongAnswerAudio.volume = 0.05;
+            rightAnswerAudio.volume = 0.05;
+        }
+    });
+
     // Bij opstart:
     getWorking()
     var woordenGedaanUitActiveLijst = 0
