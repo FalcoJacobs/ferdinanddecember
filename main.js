@@ -49,6 +49,13 @@ document.addEventListener('DOMContentLoaded', function(){
     nlWerkwoordenLijst = stringNLWerkwoordLijst.split(', ');
     frWerkwoordenLijst = stringFRWerkwoordenLijst. split(', ')
     multiArrayWerkwoordenLijst = [nlWerkwoordenLijst, frWerkwoordenLijst]
+
+    //Verbes pronominaux
+    stringNLPronominauxLijst = 'zich amuseren, heten, zijn tanden poetsen, gaan slapen, zich haasten, zich uitkleden, zich ontspannen, douchen, weggaan, zich vervelen, zich opmaken, gebeuren, zich kammen, wandelen, zich scheren, rusten, elkaar zien, wakker worden, opstaan, zich aankleden';
+    stringFRPronominauxLijst = 's\'amuser, s\'appeler, se brosser les dents, se coucher, se dépêcher, se déshabiller, se détendre, se doucher, s\'en aller, s\'ennuyer, se maquiller, se passer, se peigner, se promener, se raser, se reposer, se voir, se réveiller, se lever, s\'habiller';
+    nlPronominauxLijst = stringNLPronominauxLijst.split(', ');
+    frPronominauxLijst = stringFRPronominauxLijst.split(', ');
+    multiArrayPromonimauxLijst = [nlPronominauxLijst, frPronominauxLijst]
     // uit welke lijst er woorden moeten gehaald worden (waar ze ook in worden verwijderd).
     activeList = multiArrayT1E1
     activeListLength = activeList[0].length
@@ -79,10 +86,13 @@ document.addEventListener('DOMContentLoaded', function(){
         }else if(radioValue === 'werkwoorden'){
             activeList = multiArrayWerkwoordenLijst;
             foutenLijstActief = false;
+        }else if(radioValue === 'verbesPronominaux'){
+            activeList = multiArrayPromonimauxLijst;
+            foutenLijstActief = false;
         }else if(radioValue === 'errors'){
             activeList = activeFoutenLijst;
             foutenLijstActief = true;
-            console.log(activeList)
+            console.log(activeList);
         }
         activeListLength = activeList[0].length;
         woordenGedaanUitActiveLijst = 0;
