@@ -45,11 +45,12 @@ div {
   opacity: 0.75;
 }
 
-.muteKnop {
-  margin-top: 1vh;
+.knopjes {
+  display: inline-block;
+  margin: 1vh 1vw 0 0;
   font-size: 16px;
 }
-.muteKnop input[type=checkbox] {
+.knopjes input[type=checkbox] {
   accent-color: #AE445A;
 }
 
