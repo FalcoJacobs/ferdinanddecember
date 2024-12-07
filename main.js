@@ -91,10 +91,10 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // Moeten de soundeffects aanstaan?
-    checkKnop = document.getElementById('muteKnop');
-    isMute = checkKnop.checked;
-    checkKnop.addEventListener('change', function(){
-        isMute = checkKnop.checked;
+    checkMuteKnop = document.getElementById('muteKnop');
+    isMute = checkMuteKnop.checked;
+    checkMuteKnop.addEventListener('change', function(){
+        isMute = checkMuteKnop.checked;
         console.log(isMute);
         if(isMute){
             wrongAnswerAudio.volume = 0;
@@ -103,6 +103,23 @@ document.addEventListener('DOMContentLoaded', function(){
             wrongAnswerAudio.volume = 0.05;
             rightAnswerAudio.volume = 0.05;
         }
+    });
+    // QuackMode?
+    checkQuackKnop = document.getElementById('quackKnop');
+    isQuack = checkQuackKnop.checked;
+    checkQuackKnop.addEventListener('change', function(){
+        isQuack = checkQuackKnop.checked;
+        console.log(isQuack);
+        if(isQuack){
+            wrongAnswerAudio = new Audio('quack.mp3');
+        }else{
+            wrongAnswerAudio = new Audio('wrongAnswer.mp3');
+            if(!isMute){
+                wrongAnswerAudio.volume = 0.05;
+            }else{
+                wrongAnswerAudio.volume = 0;
+            };
+        };
     });
 
     // Bij opstart:
