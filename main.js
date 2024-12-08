@@ -56,6 +56,15 @@ document.addEventListener('DOMContentLoaded', function(){
     nlPronominauxLijst = stringNLPronominauxLijst.split(', ');
     frPronominauxLijst = stringFRPronominauxLijst.split(', ');
     multiArrayPromonimauxLijst = [nlPronominauxLijst, frPronominauxLijst]
+
+    //Uitzonderingen Passé composé
+    stringInfinitievePasseComposeLijst = 'être (zijn), avoir (hebben), devoir (moeten), voir (zien), vouloir (willen), écrire (schrijven), faire (doen / maken), prendre (nemen), savoir (weten), pouvoir (kunnen), lire (lezen), mettre (leggen/zetten), mourir (sterven), naître (geboren worden), plaire (bevallen), recevoir (ontvangen), rire (lachen), résoudre (oplossen), suivre (volgen), tenir (houden), valoir (waard zijn), vivre (leven), venir (komen), boire (drinken), connaître (kennen), dire (zeggen), falloir (moeten / nodig zijn), ouvrir (openen)';
+    stringVervoegdePasseComposeLijst = 'été, eu, dû, vu, voulu, écrit, fait, pris, su, pu, lu, mis, mort, né, plu, reçu, ri, résolu, suivi, tenu, valu, vécu, venu, bu, connu, dit, fallu, ouvert';
+    infinitievePasseComposeLijst = stringInfinitievePasseComposeLijst.split(', ');
+    vervoegdePasseComposeLijst = stringVervoegdePasseComposeLijst.split(', ');
+    multiArrayPasseComposeLijst = [infinitievePasseComposeLijst, vervoegdePasseComposeLijst];
+    console.log(multiArrayPasseComposeLijst);
+
     // uit welke lijst er woorden moeten gehaald worden (waar ze ook in worden verwijderd).
     activeList = multiArrayT1E1
     activeListLength = activeList[0].length
@@ -88,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function(){
             foutenLijstActief = false;
         }else if(radioValue === 'verbesPronominaux'){
             activeList = multiArrayPromonimauxLijst;
+            foutenLijstActief = false;
+        }else if(radioValue === 'verbesPasseCompose'){
+            activeList = multiArrayPasseComposeLijst;
             foutenLijstActief = false;
         }else if(radioValue === 'errors'){
             activeList = activeFoutenLijst;
